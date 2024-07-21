@@ -350,7 +350,11 @@ const EquilibriumWidget = () => {
               </WidgetTitle>
               <MoneyAmount
                 amountPostfix={nonStakingBurnFraction === 0 ? "" : "M"}
-                textSizeClass="text-2xl md:text-3xl"
+                textSizeClass={`
+                  text-2xl
+                  md:text-3xl
+                  ${(equilibriums?.supplyEquilibrium ?? 0) < (ethSupply ?? 0) ? "text-orange-200" : "text-blue-400"}
+                `} 
               >
                 {equilibriums !== undefined
                   ? Format.formatOneDecimal(
